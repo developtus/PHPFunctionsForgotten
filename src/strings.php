@@ -9,8 +9,13 @@
  * @param bool $truncate truncate text including words
  * @return string
  */
-function cutText(string $text, int $length = 100, bool $escape = true, string $suffix = null, bool $truncate = false): string
-{
+function cutText(
+    string $text,
+    int $length = 100,
+    bool $escape = true,
+    string $suffix = null,
+    bool $truncate = false
+): string {
     // remove unnecessary spaces
     $text = trim($text);
 
