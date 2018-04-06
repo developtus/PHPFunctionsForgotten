@@ -1,10 +1,13 @@
 {
   "name": "developtus/ffPHP",
   "description": "The forgotten functions of PHP",
+  "version": "0.1.0",
   "authors": [
     {
       "name": "Emilio Degiovanni",
-      "email": "info@developtus.com.com"
+      "email": "info@developtus.com.com",
+      "homepage": "http://www.developtus.com",
+      "role": "Developer"
     }
   ],
   "minimum-stability": "dev",
