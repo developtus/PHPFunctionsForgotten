@@ -1,6 +1,22 @@
 <?php
 
 /**
+ * @param string $string
+ * @param bool $upperFirst
+ * @return string
+ */
+function camelize(string $string, bool $upperFirst = false): string
+{
+    $string = preg_replace('/(?:^|_|-)(.?)/', "mb_strtoupper('$1')", rtrim($string, '_-'));
+
+    if ($upperFirst === true) {
+        $string[0] = mb_strtoupper($string[0]);
+    }
+
+    return $string;
+}
+
+/**
  * Cut text without cutting words
  * @param string $text text to cut
  * @param int $length text length
@@ -15,7 +31,8 @@ function cutText(
     bool $escape = true,
     string $suffix = null,
     bool $truncate = false
-): string {
+): string
+{
     // remove unnecessary spaces
     $text = trim($text);
 
@@ -41,4 +58,58 @@ function cutText(
     $text = mb_substr($text, 0, mb_strpos($text, ' ', $length));
 
     return trim($text . ' ' . $suffix);
+}
+
+/**
+ * Generate html attributes from an array
+ * @param array $attributes
+ * @return string
+ */
+function htmlAttributes(array $attributes): string
+{
+    $string = '';
+
+    foreach (array_filter($attributes) as $k => $v) {
+        $string .= ' ';
+        $v = htmlspecialchars($v, ENT_QUOTES, 'UTF-8');
+
+        // boolean attribute
+        if (is_numeric($k)) {
+            $string .= $v;
+        } else {
+            $string .= htmlspecialchars($k, ENT_QUOTES, 'UTF-8') . '="' . $v . '"';
+        }
+    }
+
+    return $string;
+}
+
+/**
+ * Upper Case Names
+ * @author jmarois at ca dot ibm dot com
+ * @see http://php.net/manual/es/function.ucwords.php#96179
+ * @param string $string
+ * @return string
+ */
+function ucname(string $string): string
+{
+    $string = ucwords(strtolower($string));
+
+    foreach (['-', '\''] as $delimiter) {
+        if (strpos($string, $delimiter) !== false) {
+            $string = implode($delimiter, array_map('ucfirst', explode($delimiter, $string)));
+        }
+    }
+
+    return $string;
+}
+
+/**
+ * @param string $string
+ * @param string $separator
+ * @return string
+ */
+function uncamelize(string $string, string $separator = '_'): string
+{
+    return mb_strtolower(preg_replace('/([^\p{L}])(\p{L})/u', "$1" . preg_quote($string, '/') . "$2", $string));
 }
