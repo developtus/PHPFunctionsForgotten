@@ -1,0 +1,19 @@
+{
+  "name": "developtus/ffPHP",
+  "description": "The forgotten functions of PHP",
+  "authors": [
+    {
+      "name": "Emilio Degiovanni",
+      "email": "info@developtus.com.com"
+    }
+  ],
+  "minimum-stability": "dev",
+  "require": {
+    "php": ">=7.0.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Developtus\\": "src/"
+    }
+  }
+}
