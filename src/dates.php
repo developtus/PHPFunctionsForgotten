@@ -6,7 +6,7 @@
  * @param string $format date format to validate
  * @return bool
  */
-function validateDate(string $date, string $format = 'Y-m-d H:i:s'): bool
+function validate_date(string $date, string $format = 'Y-m-d H:i:s'): bool
 {
     $d = \DateTime::createFromFormat($format, $date);
 

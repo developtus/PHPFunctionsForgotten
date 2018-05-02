@@ -25,14 +25,13 @@ function camelize(string $string, bool $upperFirst = false): string
  * @param bool $truncate truncate text including words
  * @return string
  */
-function cutText(
+function cut_text(
     string $text,
     int $length = 100,
     bool $escape = true,
     string $suffix = null,
     bool $truncate = false
-): string
-{
+): string {
     // remove unnecessary spaces
     $text = trim($text);
 
@@ -65,7 +64,7 @@ function cutText(
  * @param array $attributes
  * @return string
  */
-function htmlAttributes(array $attributes): string
+function html_attributes(array $attributes): string
 {
     $string = '';
 
@@ -111,5 +110,5 @@ function ucname(string $string): string
  */
 function uncamelize(string $string, string $separator = '_'): string
 {
-    return mb_strtolower(preg_replace('/([^\p{L}])(\p{L})/u', "$1" . preg_quote($string, '/') . "$2", $string));
+    return mb_strtolower(preg_replace('/([^\p{L}])(\p{L})/u', "$1" . $separator . "$2", $string));
 }
