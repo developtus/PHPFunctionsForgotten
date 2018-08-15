@@ -1,6 +1,8 @@
 <?php
 
 /**
+ * Camelize a string
+ *
  * @param string $string
  * @param bool $upperFirst
  * @return string
@@ -41,6 +43,7 @@ function checksum_string(string $string, string $algorithm = null): string
 
 /**
  * Cut text without cutting words
+ *
  * @param string $text text to cut
  * @param int $length text length
  * @param bool $escape escape spacial chars
@@ -106,6 +109,7 @@ function hash_check(string $algorithm = null): string
 
 /**
  * Generate html attributes from an array
+ *
  * @param array $attributes
  * @return string
  */
@@ -130,6 +134,7 @@ function html_attributes(array $attributes): string
 
 /**
  * Upper Case Names
+ *
  * @author jmarois at ca dot ibm dot com
  * @see http://php.net/manual/es/function.ucwords.php#96179
  * @param string $string
@@ -149,6 +154,8 @@ function ucname(string $string): string
 }
 
 /**
+ * Uncamelize a string
+ *
  * @param string $string
  * @param string $separator
  * @return string

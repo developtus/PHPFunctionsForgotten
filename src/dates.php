@@ -1,7 +1,8 @@
 <?php
 
 /**
- * Validate a date
+ * Validate a date by date format
+ *
  * @param string $date date to validate
  * @param string $format date format to validate
  * @return bool
