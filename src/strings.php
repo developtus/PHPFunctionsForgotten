@@ -17,6 +17,29 @@ function camelize(string $string, bool $upperFirst = false): string
 }
 
 /**
+ * Get the checksum of a given string
+ *
+ * @param string $string data to process
+ * @param string|null $algorithm 'sha256' is default value or the first supported
+ * @throws \InvalidArgumentException An hash algorithm is necessary
+ * @return string
+ */
+function checksum_string(string $string, string $algorithm = null): string
+{
+    // check algorithm
+    $algorithm = hash_check($algorithm);
+
+    if ($algorithm === false) {
+        throw new \InvalidArgumentException('An hash algorithm is necessary');
+    }
+
+    $hash = hash($algorithm, $string, true);
+    $hash_base64 = base64_encode($hash);
+
+    return $algorithm . "-" . $hash_base64;
+}
+
+/**
  * Cut text without cutting words
  * @param string $text text to cut
  * @param int $length text length
@@ -57,6 +80,28 @@ function cut_text(
     $text = mb_substr($text, 0, mb_strpos($text, ' ', $length));
 
     return trim($text . ' ' . $suffix);
+}
+
+/**
+ * It is checked whether the hash algorithm is valid or else it will be tried with the sha256 hash otherwise
+ * the first supported algorithm will be returned
+ *
+ * @param string|null $algorithm
+ * @return string|bool
+ */
+function hash_check(string $algorithm = null): string
+{
+    // check algorithm
+    if ($algorithm === null || // not defined
+        array_search($algorithm, hash_algos(), true) === false) {
+        $algorithm = array_search('sha256', hash_algos(), true) ? 'sha256' : current(hash_algos());
+    }
+
+    if (!$algorithm) {
+        return false;
+    }
+
+    return $algorithm;
 }
 
 /**
