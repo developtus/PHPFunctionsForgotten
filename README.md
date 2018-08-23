@@ -9,6 +9,10 @@ Organized list of forgotten functions to be included in the PHP core but which a
 
 ## File functions
 - [checksum_file](https://github.com/developtus/ff-php/blob/master/src/files.php#L19)
+- [human_bytes_convert](https://github.com/developtus/ff-php/blob/master/src/files.php#L54)
+
+## Object functions
+- [object_to_array](https://github.com/developtus/ff-php/blob/master/src/objects.php#L9)
 
 ## String functions
 - [camelize](https://github.com/developtus/ff-php/blob/master/src/strings.php#L10)
@@ -18,3 +22,4 @@ Organized list of forgotten functions to be included in the PHP core but which a
 - [html_attributes](https://github.com/developtus/ff-php/blob/master/src/strings.php#L116)
 - [ucname](https://github.com/developtus/ff-php/blob/master/src/strings.php#L143)
 - [uncamelize](https://github.com/developtus/ff-php/blob/master/src/strings.php#L163)
+- [var_to_string](https://github.com/developtus/ff-php/blob/master/src/strings.php#L176)
