@@ -167,7 +167,7 @@ function uncamelize(string $string, string $separator = '_'): string
 
 
 /**
- * Convertir un array en string
+ * Convert any variable in a string representation
  *
  * @param mixed $data
  * @param int $depth if xdebug is installed, var_dump is modified, to show all data modify depth value
