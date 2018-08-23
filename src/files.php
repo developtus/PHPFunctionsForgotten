@@ -9,6 +9,7 @@
  *        integrity="<?=checksum_file("styles.css", "sha384")?>"
  *        crossorigin="anonymous">
  * </code>
+ *
  * @param string $filename
  * @param string|null $algorithm 'sha256' is default hash algorithm
  * @throws \InvalidArgumentException An hash algorithm is necessary
@@ -38,4 +39,29 @@ function checksum_file(string $filename, string $algorithm = null): string
     $hash_base64 = base64_encode($hash);
 
     return $algorithm . "-" . $hash_base64;
+}
+
+/**
+ * Converts a number of bytes to a value understandable by humans
+ * <code>
+ *  echo human_bytes_convert(1024); // 1 KB
+ *  echo human_bytes_convert(1024 * 1024 * 5); // 5 MB
+ * </code>
+ *
+ * @param int $bytes
+ * @return string
+ */
+function human_bytes_convert(int $bytes): string
+{
+    $bytes = abs($bytes);
+
+    if ($bytes === 0) {
+        return "0 B";
+    }
+
+    $s = ['B', 'KB', 'MB', 'GB', 'TB', 'PB'];
+    $e = floor(log($bytes, 1024));
+    $unit = $s[(int) $e] ?? current($s);
+
+    return round($bytes / pow(1024, $e), 2) . ' ' . $unit;
 }
