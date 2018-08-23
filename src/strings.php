@@ -164,3 +164,25 @@ function uncamelize(string $string, string $separator = '_'): string
 {
     return mb_strtolower(preg_replace('/([^\p{L}])(\p{L})/u', "$1" . $separator . "$2", $string));
 }
+
+
+/**
+ * Convertir un array en string
+ *
+ * @param mixed $data
+ * @param int $depth if xdebug is installed, var_dump is modified, to show all data modify depth value
+ * @return string
+ */
+function var_to_string($data, int $depth = -1): string
+{
+    if (extension_loaded('xdebug') === true) {
+        ini_set('xdebug.var_display_max_children', $depth);
+        ini_set('xdebug.var_display_max_depth', $depth);
+        ini_set('xdebug.var_display_max_data', $depth);
+    }
+
+    ob_start();
+    var_dump($data);
+
+    return ob_get_clean();
+}
