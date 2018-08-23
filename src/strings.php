@@ -165,7 +165,6 @@ function uncamelize(string $string, string $separator = '_'): string
     return mb_strtolower(preg_replace('/([^\p{L}])(\p{L})/u', "$1" . $separator . "$2", $string));
 }
 
-
 /**
  * Convert any variable in a string representation
  *
