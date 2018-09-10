@@ -48,6 +48,7 @@ function checksum_file(string $filename, string $algorithm = null): string
  *  echo human_bytes_convert(1024 * 1024 * 5); // 5 MB
  * </code>
  *
+ * @see https://es.wikipedia.org/wiki/Byte
  * @param int $bytes
  * @return string
  */
@@ -59,7 +60,7 @@ function human_bytes_convert(int $bytes): string
         return "0 B";
     }
 
-    $s = ['B', 'KB', 'MB', 'GB', 'TB', 'PB'];
+    $s = ['B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
     $e = floor(log($bytes, 1024));
     $unit = $s[(int) $e] ?? current($s);
 
