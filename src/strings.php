@@ -1,6 +1,17 @@
 <?php
 
 /**
+ * Convert <br> tags to newlines and carriage returns.
+ *
+ * @param string The string to convert
+ * @return string The converted string
+ */
+function br2nl(string $string): string
+{
+    return preg_replace('/\<br(\s*)?\/?\>/i', PHP_EOL, $string);
+}
+
+/**
  * Camelize a string
  *
  * @param string $string
@@ -57,7 +68,8 @@ function cut_text(
     bool $escape = true,
     string $suffix = null,
     bool $truncate = false
-): string {
+): string
+{
     // remove unnecessary spaces
     $text = trim($text);
 
